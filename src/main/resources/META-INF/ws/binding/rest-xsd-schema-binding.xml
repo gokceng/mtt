@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jaxb:bindings
+		xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		version="2.0">
+	<!--Top level classes-->
+	<jaxb:globalBindings localScoping="toplevel">
+		<!-- Use java.util.Calendar instead of javax.xml.datatype.XMLGregorianCalendar for xs:dateTime -->
+		<jaxb:javaType name="java.util.Calendar" xmlType="xs:dateTime"
+		               parseMethod="javax.xml.bind.DatatypeConverter.parseDateTime"
+		               printMethod="javax.xml.bind.DatatypeConverter.printDateTime"
+				/>
+	</jaxb:globalBindings>
+
+	<jaxb:bindings schemaLocation="../schema/Availability.xsd" node="//xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="irl.mtt.biz.gokceng.airline.schema.model"/>
+		</jaxb:schemaBindings>
+	</jaxb:bindings>
+</jaxb:bindings>

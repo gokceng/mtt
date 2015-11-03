@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean name="stringToDateConverter" class="irl.mtt.biz.gokceng.airline.converter.generic.StringToDateConverter"/>
+	<bean name="dateToStringConverter" class="irl.mtt.biz.gokceng.airline.converter.generic.DateToStringConverter"/>
+
+	<bean name="availabilityToFlightSetConverter"
+	      class="irl.mtt.biz.gokceng.airline.converter.model.AvailabilityToFlightSetConverter"/>
+
+	<bean name="calendarToTimeDtoConverter" class="irl.mtt.biz.gokceng.airline.converter.model.CalendarToTimeDtoConverter"/>
+
+	<bean name="faresToFarePricesDtoConverter" class="irl.mtt.biz.gokceng.airline.converter.model.FaresToFarePricesDtoConverter"/>
+
+	<bean name="fareToFarePriceDtoConverter" class="irl.mtt.biz.gokceng.airline.converter.model.FareToFarePriceDtoConverter"/>
+
+	<bean name="flightToFlightDtoConverter" class="irl.mtt.biz.gokceng.airline.converter.model.FlightToFlightDtoConverter"/>
+
+	<bean name="stringToPriceDtoConverter" class="irl.mtt.biz.gokceng.airline.converter.model.StringToPriceDtoConverter"/>
+
+	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<ref bean="stringToDateConverter"/>
+				<ref bean="dateToStringConverter"/>
+			</set>
+		</property>
+	</bean>
+</beans>
