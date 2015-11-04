@@ -1,25 +1,37 @@
 package irl.mtt.biz.gokceng.airline.converter.model
 
 import irl.mtt.biz.gokceng.airline.converter.ConversionServiceAwareConverter
-import irl.mtt.biz.gokceng.airline.converter.CustomConverter
 import irl.mtt.biz.gokceng.airline.model.TimeDto
+import org.joda.time.format.DateTimeFormat
+import org.joda.time.format.DateTimeFormatter
+import org.springframework.util.Assert
 
-import java.text.Format
-import java.text.SimpleDateFormat
+import javax.annotation.concurrent.ThreadSafe
 
 /**
  * @author Gökçen Güner
  * @since 1.0.0
  * 03.11.2015
  */
-class CalendarToTimeDtoConverter extends ConversionServiceAwareConverter<Calendar, TimeDto> implements CustomConverter {
+@ThreadSafe
+class CalendarToTimeDtoConverter extends ConversionServiceAwareConverter<Calendar, TimeDto> {
+	private final DateTimeFormatter dateFormatter
+	private final DateTimeFormatter timeFormatter
+
+	CalendarToTimeDtoConverter(String dateFormat, String timeFormat) {
+		Assert.hasLength(dateFormat)
+		Assert.hasLength(timeFormat)
+		dateFormatter = DateTimeFormat.forPattern(dateFormat);
+		timeFormatter = DateTimeFormat.forPattern(timeFormat);
+	}
+
 	@Override
 	TimeDto convert(Calendar source) {
-		Format dateFormat = new SimpleDateFormat(DD_MM_YYYY);
-		String date = dateFormat.format(source.getTime());
-		Format timeFormat = new SimpleDateFormat(HH_MM_A);
-		String time = timeFormat.format(source.getTime());
-		TimeDto timeDto = new TimeDto(date: date, time: time);
-		return timeDto;
+		Assert.notNull(source);
+
+		long sourceTimeInMillis = source.getTime().getTime()
+		String date = dateFormatter.print(sourceTimeInMillis);
+		String time = timeFormatter.print(sourceTimeInMillis);
+		return new TimeDto(date: date, time: time);
 	}
 }

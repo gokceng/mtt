@@ -10,9 +10,7 @@ import org.springframework.test.context.web.WebAppConfiguration
 @SpringApplicationConfiguration(classes = GokcengApplication)
 @WebAppConfiguration
 class GokcengApplicationTests {
-
 	@Test
 	void contextLoads() {
 	}
-
 }

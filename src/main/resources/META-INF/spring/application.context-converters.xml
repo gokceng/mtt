@@ -3,13 +3,20 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean name="stringToDateConverter" class="irl.mtt.biz.gokceng.airline.converter.generic.StringToDateConverter"/>
-	<bean name="dateToStringConverter" class="irl.mtt.biz.gokceng.airline.converter.generic.DateToStringConverter"/>
+	<bean name="stringToDateConverter" class="irl.mtt.biz.gokceng.airline.converter.generic.StringToDateConverter">
+		<constructor-arg name="format" value="${date.format.yyyyMMdd}"/>
+	</bean>
+	<bean name="dateToStringConverter" class="irl.mtt.biz.gokceng.airline.converter.generic.DateToStringConverter">
+		<constructor-arg name="format" value="${date.format.yyyyMMdd}"/>
+	</bean>
 
 	<bean name="availabilityToFlightSetConverter"
 	      class="irl.mtt.biz.gokceng.airline.converter.model.AvailabilityToAvailabilityDtoConverter"/>
 
-	<bean name="calendarToTimeDtoConverter" class="irl.mtt.biz.gokceng.airline.converter.model.CalendarToTimeDtoConverter"/>
+	<bean name="calendarToTimeDtoConverter" class="irl.mtt.biz.gokceng.airline.converter.model.CalendarToTimeDtoConverter">
+		<constructor-arg name="dateFormat" value="${date.format.ddMMyyyy}"/>
+		<constructor-arg name="timeFormat" value="${time.format.HHmma}"/>
+	</bean>
 
 	<bean name="faresToFarePricesDtoConverter" class="irl.mtt.biz.gokceng.airline.converter.model.FaresToFarePricesDtoConverter"/>
 
@@ -17,7 +24,9 @@
 
 	<bean name="flightToFlightDtoConverter" class="irl.mtt.biz.gokceng.airline.converter.model.FlightToFlightDtoConverter"/>
 
-	<bean name="stringToPriceDtoConverter" class="irl.mtt.biz.gokceng.airline.converter.model.StringToPriceDtoConverter"/>
+	<bean name="stringToPriceDtoConverter" class="irl.mtt.biz.gokceng.airline.converter.model.StringToPriceDtoConverter">
+		<constructor-arg name="delimiter" value="${delimiter.oneWhiteChar}"/>
+	</bean>
 
 	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
 		<property name="converters">

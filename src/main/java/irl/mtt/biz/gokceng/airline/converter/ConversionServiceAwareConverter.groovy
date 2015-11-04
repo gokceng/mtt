@@ -17,8 +17,8 @@ abstract class ConversionServiceAwareConverter<S, T> implements Converter<S, T> 
 	@Autowired
 	private ConversionService conversionService;
 
-	protected ConversionService conversionService() {
-		return conversionService;
+	protected <Source, Destination> Destination convertToType(Source source, Class<Destination> destinationClass) {
+		conversionService.convert(source, destinationClass);
 	}
 
 	/**
