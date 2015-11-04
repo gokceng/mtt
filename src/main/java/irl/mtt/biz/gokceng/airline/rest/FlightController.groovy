@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @RequestMapping(value = "/flights")
-class FlightControllerService {
+class FlightController {
 	@Autowired
 	private FlightControllerRestClient flightControllerRestClient
 
