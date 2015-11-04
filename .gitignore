@@ -4,8 +4,6 @@
 # IntelliJ project files
 *.iml
 .idea
-/src/main/resources/mine.json
-/src/main/resources/theirs.json
 gen
 out
 target
