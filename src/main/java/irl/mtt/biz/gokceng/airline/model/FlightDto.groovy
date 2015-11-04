@@ -1,5 +1,4 @@
 package irl.mtt.biz.gokceng.airline.model
-
 /**
  * @author Gökçen Güner
  * @since 1.0.0
@@ -14,4 +13,4 @@ class FlightDto {
 	TimeDto arrivesOn;
 	String flightTime;
 	FarePricesDto farePrices;
- }
+}

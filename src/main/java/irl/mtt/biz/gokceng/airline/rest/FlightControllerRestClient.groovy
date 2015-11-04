@@ -1,6 +1,6 @@
 package irl.mtt.biz.gokceng.airline.rest
 
-import irl.mtt.biz.gokceng.airline.model.FlightDto
+import irl.mtt.biz.gokceng.airline.model.AvailabilityDto
 import irl.mtt.biz.gokceng.airline.schema.model.Availability
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.convert.ConversionService
@@ -24,17 +24,15 @@ class FlightControllerRestClient {
 	@Autowired
 	ConversionService conversionService;
 
-	Set<FlightDto> getFlights(String originAirport,
-	                          String destinationAirport,
-	                          Date departureDate,
-	                          Date returnDate,
-	                          int numberOfPassengers) {
-
+	AvailabilityDto getFlights(String originAirport,
+	                           String destinationAirport,
+	                           Date departureDate,
+	                           Date returnDate,
+	                           int numberOfPassengers) {
 		String departureDateStr = conversionService.convert(departureDate, String.class);
 		String returnDateStr = conversionService.convert(returnDate, String.class);
 		ResponseEntity<Availability> responseEntity = restTemplate.getForEntity(ENDPOINT, Availability.class, originAirport, destinationAirport, departureDateStr, returnDateStr, numberOfPassengers);
 
-		Set<FlightDto> flightDtos = conversionService.convert(responseEntity.body, Set.class);
-		return flightDtos;
+		return conversionService.convert(responseEntity.body, AvailabilityDto.class);
 	}
 }

@@ -2,8 +2,10 @@
 ### Example user template
 
 # IntelliJ project files
-.idea
 *.iml
-out
+.idea
+/src/main/resources/mine.json
+/src/main/resources/theirs.json
 gen
-# Created by .ignore support plugin (hsz.mobi)
+out
+target

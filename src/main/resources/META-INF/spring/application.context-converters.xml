@@ -7,7 +7,7 @@
 	<bean name="dateToStringConverter" class="irl.mtt.biz.gokceng.airline.converter.generic.DateToStringConverter"/>
 
 	<bean name="availabilityToFlightSetConverter"
-	      class="irl.mtt.biz.gokceng.airline.converter.model.AvailabilityToFlightSetConverter"/>
+	      class="irl.mtt.biz.gokceng.airline.converter.model.AvailabilityToAvailabilityDtoConverter"/>
 
 	<bean name="calendarToTimeDtoConverter" class="irl.mtt.biz.gokceng.airline.converter.model.CalendarToTimeDtoConverter"/>
 
