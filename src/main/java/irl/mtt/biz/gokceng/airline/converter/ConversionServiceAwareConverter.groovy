@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct
  * Instances of implementing classes must be spring-managed to inject ConversionService.
  *
  * @author Michal Kreuzman
+ * @see <a href="https://stackoverflow.com/a/18249958/1108890">https://stackoverflow.com/</a>
  */
 abstract class ConversionServiceAwareConverter<S, T> implements Converter<S, T> {
 	@Autowired
